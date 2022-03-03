@@ -1,3 +1,6 @@
-ru\geekbrains\InitFilter.class
-ru\geekbrains\FirstServlet.class
+ru\geekbrains\Product.class
 ru\geekbrains\FirstHTTPServlet.class
+ru\geekbrains\ProductRepository.class
+ru\geekbrains\InitFilter.class
+ru\geekbrains\ProductServlet.class
+ru\geekbrains\FirstServlet.class
