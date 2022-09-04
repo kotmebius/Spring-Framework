@@ -6,3 +6,8 @@
 # Datasource local storage ignored files
 /dataSources/
 /dataSources.local.xml
+
+
+#Target
+lesson-02-Spring/target/
+
