@@ -10,6 +10,7 @@
         <module name="lesson-01-servlet-api" />
         <module name="lesson-03-Spring-MVC" />
         <module name="lesson-04-Spring-Boot" />
+        <module name="lesson-05-hibernate" />
         <module name="lesson-02-Spring" />
       </profile>
     </annotationProcessing>
