@@ -19,6 +19,7 @@
         <module>lesson-01-servlet-api</module>
         <module>lesson-02-Spring</module>
         <module>lesson-03-Spring-MVC</module>
+        <module>lesson-05-hibernate</module>
     </modules>
 
     <dependencies>
