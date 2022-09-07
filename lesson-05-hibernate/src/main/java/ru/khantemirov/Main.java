@@ -3,7 +3,9 @@ package ru.khantemirov;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import org.hibernate.cfg.Configuration;
-//import ru.khantemirov.model.User;
+import ru.khantemirov.dao.ProductRepository;
+import ru.khantemirov.dao.ProductRepositoryImpl;
+import ru.khantemirov.model.Product;
 
 import java.util.List;
 
@@ -16,7 +18,24 @@ public class Main {
 
         EntityManager entityManager = entityManagerFactory.createEntityManager();
 
-        // INSERT
+        ProductRepository productRepository = new ProductRepositoryImpl(entityManager);
+
+
+        System.out.println(productRepository.findById(4L));
+        System.out.println(productRepository.findById(10L));
+
+        System.out.println(productRepository.findAll());
+
+        Product product = productRepository.findById(4L);
+        product.setName("SyncroFazotron");
+        product.setCost(3000000);
+        productRepository.save(product);
+
+        productRepository.delete(5L);
+        productRepository.delete(60L);
+
+
+//         INSERT
 //        entityManager.getTransaction().begin();
 //
 //        entityManager.persist(new User("User1", "1@a.com", "pass1"));
@@ -24,6 +43,12 @@ public class Main {
 //        entityManager.persist(new User("User3", "3@a.com", "pass3"));
 //
 //        entityManager.getTransaction().commit();
+
+
+//        productRepository.addProduct(new Product("MotherBoard", 8000));
+//        productRepository.addProduct(new Product("HDD", 3000));
+//        productRepository.addProduct(new Product("SSD", 5000));
+
 
         // SELECT
 //        User user = entityManager.find(User.class, 1L);
