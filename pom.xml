@@ -20,6 +20,7 @@
         <module>lesson-02-Spring</module>
         <module>lesson-03-Spring-MVC</module>
         <module>lesson-05-hibernate</module>
+        <module>lesson-06-hibernate</module>
     </modules>
 
     <dependencies>

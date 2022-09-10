@@ -8,6 +8,7 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="lesson-01-servlet-api" />
+        <module name="lesson-06-hibernate" />
         <module name="lesson-03-Spring-MVC" />
         <module name="lesson-04-Spring-Boot" />
         <module name="lesson-05-hibernate" />
