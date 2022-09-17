@@ -1,0 +1,8 @@
+ru\khantemirov\model\mapper\ProductDtoMapper.class
+ru\khantemirov\model\mapper\ProductDtoMapperImpl.class
+ru\khantemirov\service\ProductService.class
+ru\khantemirov\Lesson08ThymeleafApplication.class
+ru\khantemirov\model\Product.class
+ru\khantemirov\controller\ProductController.class
+ru\khantemirov\model\dto\ProductDto.class
+ru\khantemirov\repository\ProductRepository.class

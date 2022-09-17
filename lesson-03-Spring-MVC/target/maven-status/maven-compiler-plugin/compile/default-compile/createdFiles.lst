@@ -1,0 +1,5 @@
+ru\khantemirov\contoller\UserController.class
+ru\khantemirov\config\WebInitializer.class
+ru\khantemirov\AppConfig.class
+ru\khantemirov\persist\User.class
+ru\khantemirov\persist\UserRepository.class
