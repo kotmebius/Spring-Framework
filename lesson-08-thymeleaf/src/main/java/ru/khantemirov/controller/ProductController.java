@@ -6,11 +6,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import ru.khantemirov.persist.Product;
-import ru.khantemirov.persist.ProductRepository;
+import ru.khantemirov.model.Product;
+import ru.khantemirov.model.dto.ProductDto;
+import ru.khantemirov.repository.ProductRepository;
+import ru.khantemirov.service.ProductService;
 
 import javax.annotation.PostConstruct;
 import java.math.BigDecimal;
+import java.util.Optional;
 
 
 @Slf4j
@@ -19,23 +22,28 @@ import java.math.BigDecimal;
 @RequiredArgsConstructor
 public class ProductController {
 
-    private final ProductRepository productRepository;
+    private final ProductService productService;
 
     @GetMapping
     public String listPage(@RequestParam(required = false) String productFilter,
                            @RequestParam(required = false) BigDecimal costMinFilter,
                            @RequestParam(required = false) BigDecimal costMaxFilter,
+                           @RequestParam(required = false) Optional<Integer> page,
+                           @RequestParam(required = false) Optional<Integer> size,
+                           @RequestParam(required = false) Optional<String> sortField,
                            Model model) {
-        productFilter = productFilter == null || productFilter.isBlank() ? null : "%" + productFilter.trim() + "%";
-        costMinFilter = costMinFilter == null ? BigDecimal.ZERO : costMinFilter;
-        costMaxFilter = costMaxFilter == null ? null : costMaxFilter;
-        model.addAttribute("products", productRepository.productByFilter(productFilter, costMinFilter, costMaxFilter));
+        Integer pageValue = page.orElse(1) - 1;
+        Integer sizeValue = size.orElse(4);
+        String sortFieldValue = sortField.filter(s -> !s.isBlank()).orElse("id");
+
+        model.addAttribute("products", productService.findAllByFilter(productFilter, costMinFilter,
+                costMaxFilter, pageValue, sizeValue, sortFieldValue));
         return "product";
     }
 
     @GetMapping("/{id}")
     public String form(@PathVariable("id") long id, Model model) {
-        model.addAttribute("product", productRepository.findById(id));
+        model.addAttribute("product", productService.findProductById(id));
         return "product_form";
     }
 
@@ -47,22 +55,22 @@ public class ProductController {
 
     @GetMapping("/delete/{id}")
     public String deleteProductById(@PathVariable long id) {
-        productRepository.deleteById(id);
+        productService.deleteProductById(id);
         return "redirect:/product";
     }
 
     @PostMapping
-    public String saveProduct(Product product, BindingResult bindingResult) {
+    public String saveProduct(ProductDto product, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "product_form";
         }
-        productRepository.save(product);
+        productService.save(product);
         return "redirect:/product";
     }
 
     @PostMapping("/update")
-    public String updateProduct(Product product) {
-        productRepository.save(product);
+    public String updateProduct(ProductDto product) {
+        productService.save(product);
         return "redirect:/product";
     }
 

@@ -1,4 +1,4 @@
-package ru.khantemirov.persist;
+package ru.khantemirov.model;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

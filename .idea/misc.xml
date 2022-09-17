@@ -11,6 +11,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/lesson-04-Spring-Boot/pom.xml" />
         <option value="$PROJECT_DIR$/lesson-07-Spring-Data/pom.xml" />
+        <option value="$PROJECT_DIR$/lesson-08-thymeleaf/pom.xml" />
       </list>
     </option>
   </component>
