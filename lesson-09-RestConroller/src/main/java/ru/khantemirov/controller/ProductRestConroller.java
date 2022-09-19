@@ -28,7 +28,7 @@ public class ProductRestConroller {
                                      @RequestParam(required = false) Optional<String> sortField,
                                      Model model) {
         Integer pageValue = page.orElse(1) - 1;
-        Integer sizeValue = size.orElse(5);
+        Integer sizeValue = size.orElse(15);
         String sortFieldValue = sortField.filter(s -> !s.isBlank()).orElse("id");
 
         Page<ProductDto> allByFilter = productService.findAllByFilter(productFilter, costMinFilter,
@@ -42,7 +42,7 @@ public class ProductRestConroller {
         return product;
     }
 
-    @PostMapping
+    @PutMapping
     public ProductDto saveProduct(@RequestBody ProductDto product) {
         productService.save(product);
         return product;
