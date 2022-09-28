@@ -16,7 +16,7 @@ import java.util.Optional;
 
 @Slf4j
 @Controller
-@RequestMapping("/product")
+@RequestMapping(value={"", "/", "/product"})
 @RequiredArgsConstructor
 public class ProductController {
 
