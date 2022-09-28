@@ -12,6 +12,8 @@ import {error} from "@angular/compiler-cli/src/transformers/util";
 export class ProductFormComponent implements OnInit {
 
   product = new Product(null, "", 0);
+  error = false;
+  errorMessage = "";
 
   constructor(private productService: ProductServiceComponent,
               private route: ActivatedRoute,
@@ -25,8 +27,12 @@ export class ProductFormComponent implements OnInit {
       this.productService.findById(param['id'])
         .subscribe(res => {
           this.product = res;
+          this.error = false;
+          this.errorMessage = "";
         }, error => {
           console.log(error)
+          this.error = true;
+          this.errorMessage = error.errorMessage;
         })
     })
   }
@@ -35,9 +41,13 @@ export class ProductFormComponent implements OnInit {
     this.productService.save(this.product)
       .subscribe(res => {
         console.log(res)
+        this.error = false;
+        this.errorMessage = "";
         this.router.navigateByUrl('/product')
       }, error => {
         console.log(error);
+        this.error = true;
+        this.errorMessage = error.errorMessage;
       })
   }
 }
